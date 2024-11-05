@@ -11,19 +11,16 @@ import sys
 keywords = [
     "os.execute",
     "PerformHttpRequest",
-    r"\\x[0-9A-Fa-f]{2}"  # Matches binary strings like \x50
+    r"\\x[0-9A-Fa-f]{2}"
 ]
 
 def apply_theme_to_titlebar(root):
     version = sys.getwindowsversion()
 
     if version.major == 10 and version.build >= 22000:
-        # Set the title bar color to the background color on Windows 11 for better appearance
         pywinstyles.change_header_color(root, "#1c1c1c" if sv_ttk.get_theme() == "dark" else "#fafafa")
     elif version.major == 10:
         pywinstyles.apply_style(root, "dark" if sv_ttk.get_theme() == "dark" else "normal")
-
-        # A hacky way to update the title bar's color on Windows 10 (it doesn't update instantly like on Windows 11)
         root.wm_attributes("-alpha", 0.99)
         root.wm_attributes("-alpha", 1)
 
@@ -47,7 +44,6 @@ def scan_files():
                                 results.append(f"Found '{keyword}' in '{file_path}' on line {line_number}")
                                 line_info.append(f"{file_path} (Line {line_number}):\n{line.strip()}\n")  # Added new line for spacing
 
-    # Display results
     results_text.delete(1.0, tk.END)
     results_text.insert(tk.END, f"{len(results)} results found:\n\n")
     
@@ -70,7 +66,7 @@ def choose_folder():
 # Create the main window
 root = tk.Tk()
 root.title("Rup-Scripts Backdoor Scanner")
-root.geometry("1200x700")  # Increased size for better visibility
+root.geometry("1200x700")
 
 # Center the window on the screen
 screen_width = root.winfo_screenwidth()
@@ -81,7 +77,7 @@ x_coordinate = int((screen_width / 2) - (window_width / 2))
 y_coordinate = int((screen_height / 2) - (window_height / 2))
 root.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
-# Apply the Sun Valley theme
+# Apply the svt_ttk theme
 sv_ttk.set_theme("dark")
 
 # Folder selection
@@ -107,7 +103,7 @@ results_label.pack(pady=5)
 results_frame = ttk.Frame(root)
 results_frame.pack(pady=5)
 
-# Darker background for results text area
+# Results text area
 results_text = scrolledtext.ScrolledText(results_frame, width=110, height=15, wrap=tk.WORD, font=('Arial', 12), bg='#111111', fg='white')
 results_text.pack(padx=5, pady=5)
 
@@ -118,7 +114,7 @@ line_label.pack(pady=5)
 line_frame = ttk.Frame(root)
 line_frame.pack(pady=5)
 
-# Darker background for line info text area
+# Line info text area
 line_text = scrolledtext.ScrolledText(line_frame, width=110, height=7, wrap=tk.WORD, font=('Arial', 12), bg='#111111', fg='white')
 line_text.pack(padx=5, pady=5)
 

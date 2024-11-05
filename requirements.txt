@@ -1,2 +1,0 @@
-sv_ttk
-pywinstyles
